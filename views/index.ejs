@@ -6,18 +6,20 @@
 <section class="articles">
   <h2 class="articles-heading">Latest posts</h2>
   <ul class="article-ul">
+    <% data.forEach(post => { %>
+     
     <li>
-      <a href="#">
-        <span>Post title</span>
-        <span class="article-list-date">Date</span>
+      <a href="/post/<%= post._id %>">
+        <span><%= post.title %></span>
+        <span class="article-list-date"><%= post.createdAt.toDateString() %></span>
       </a>
     </li>
-    <li>
-      <a href="#">
-        <span>Post title</span>
-        <span class="article-list-date">Date</span>
-      </a>
-    </li>
+
+    <% }) %>
+
   </ul>
-  <a href="#" class="pagination">&lt; view older posts</a>
+  <% if (nextPage !== null) { %>
+    <a href="/?page=<%= nextPage %>" class="pagination capital">&lt; view older posts</a>
+  <% } %>
+  
 </section>
