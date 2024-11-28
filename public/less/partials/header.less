@@ -1,0 +1,73 @@
+.header {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  padding-top: 0.75rem;
+  grid-template-areas: 
+  "logo button"
+  "menu menu"
+  ;
+}
+
+.header-logo {
+  grid-area: logo;
+  .bold;
+  font-size: 1.5rem;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.header-nav {
+  grid-area: menu;
+  .flexRowCenter();
+}
+
+.header-button {
+  .flexRow(flex-end, center);
+  grid-area: button;
+  button {
+    .flexRowCenter();
+    gap: 0.25rem;
+    padding: 0.5rem 0.75rem;
+    background: none;
+    border-radius: 0.5rem;
+    border: 2px solid transparent;
+    font-size: 0.9rem;
+    .bold;
+    color: @black;
+    &:hover {
+      border: 2px solid @black;
+    }
+  }
+}
+
+.header-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  .bold;
+  a {
+    padding: 0.75rem;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+    &:active {
+      color: @grey;
+    }
+  }
+}
+
+
+@media only screen and (min-width: 768px) {
+  
+  .header {
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: 
+    "logo menu button"
+    ;
+  }
+}

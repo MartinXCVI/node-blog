@@ -1,0 +1,110 @@
+.author {
+  padding: 0.75rem 0;
+  text-align: center;
+}
+
+.author-heading {
+  margin-top: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.author-body {
+  font-size: 1rem;
+  margin: 0.25em 0 2.5rem 0;
+}
+
+.article-heading {
+  margin-top: 4rem;
+  .semi-bold;
+}
+
+.article-ul {
+  .flexCol(flex-start, flex-start);
+  list-style: none;
+  font-size: 1.25rem;
+  li {
+    width: 100%;
+    font-size: 1.5rem;
+    transition: filter 0.2s;
+  }
+}
+
+.article-ul li:not(:last-child) {
+  border-bottom: 1px solid @lightGrey;
+}
+
+.article-ul li:hover {
+  filter: none;
+}
+
+.article-ul:hover li {
+  filter: blur(1px);
+}
+
+.article-ul:hover li:hover {
+  filter: none;
+}
+
+.pagination {
+  display: inline-block;
+  font-size: 1.25rem;
+  color: @grey;
+  text-decoration: none;
+  margin-top: 2.5rem;
+  &:hover {
+    color: @black;
+  }
+}
+
+.article {
+  white-space: pre-wrap;
+}
+
+.article-list-date {
+  width: 16rem;
+  display: inline-block;
+  font-size: 0.9rem;
+  color: @grey;
+}
+
+.article-ul li a {
+  .flexCol(@between, center);
+  text-decoration: none;
+  margin: 1rem 0;
+}
+
+//----- Admin Dashboard
+
+.admin-title {
+  .flexRow(@between, center);
+}
+
+.admin-post-controls form {
+  display: inline-block;
+}
+
+.admin-post-controls .button {
+  display: inline-block;
+  background-color: @black;
+  color: @lightGrey;
+  text-decoration: none;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  line-height: 2;
+}
+
+.admin-posts li {
+  .flexCol(@between, center);
+  padding: 0.75rem 0
+}
+
+@media only screen and (min-width: 768px) {
+
+  .article-ul li a {
+    flex-direction: row;
+  }
+
+  .article-list-date {
+    text-align: right;
+  }
+}
