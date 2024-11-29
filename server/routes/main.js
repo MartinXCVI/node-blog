@@ -5,7 +5,7 @@ const Post = require('../models/Post')
 
 /* ROUTES */
 
-// Home - GET
+// Home route - GET
 router.get('/', async (req, res)=> {
 
   try{
@@ -33,6 +33,52 @@ router.get('/', async (req, res)=> {
       nextPage: hasNextPage ? nextPage : null
     })
 
+  } catch(error) {
+    console.error(error)
+  }
+})
+
+// Post: id route - GET
+router.get('/post/:id', async (req, res)=> {
+  try {
+    let slug = req.params.id
+    
+    const data = await Post.findById({ _id: slug })
+
+    const locals = {
+      title: `${data.title} — Node Blog`,
+      description: "Simple blog created with Node/Express/Mongo"
+    }
+
+    res.render('post', { locals, data })
+  } catch(error) {
+    console.error(error)
+  }
+})
+
+// Post: search-term - POST
+router.post('/search', async (req, res)=> {
+  try {
+    const locals = {
+      title: "Search",
+      description: "Simple blog created with Node/Express/Mongo"
+    }
+
+    let searchTerm = req.body.searchTerm
+    const searchNoSpecialChar = searchTerm.replace(/[^a-zA-Z0-9 ]/g, "")
+    
+    const data = await Post.find({
+      $or: [
+        {
+          title: { $regex: new RegExp(searchNoSpecialChar, 'i') },
+          body: { $regex: new RegExp(searchNoSpecialChar, 'i') }
+        }
+      ]
+    })
+    res.render("search", {
+      data,
+      locals,
+    })
   } catch(error) {
     console.error(error)
   }
