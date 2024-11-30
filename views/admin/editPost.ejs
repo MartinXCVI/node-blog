@@ -1,0 +1,41 @@
+<a href="/dashboard">&larr; Back</a>
+<div class="admin-title">
+  <h2 class="capital">
+    <i class="fa-solid fa-file-pen"></i> view or edit post
+  </h2>
+
+  <form action="/deletePost/<%= data._id %>?_method=DELETE" method="POST">
+    <button type="submit" class="button btn-delete capital">
+      <i class="fa-solid fa-trash-can"></i> delete
+    </button>
+  </form>
+
+  <form action="/editPost/<%= data._id %>?_method=PUT" method="POST">
+    <label for="title-input">
+      <input 
+        type="text" 
+        id="title-input" 
+        placeholder="Post title here" 
+        name="title"
+        value="<%= data.title %>"
+      >
+    </label>
+    <label for="body-input">
+      <textarea 
+        type="text" 
+        id="body-input" 
+        placeholder="Post content here" 
+        name="body"
+        cols="50"
+        rows="10"
+        value=""
+      ><%= data.body %></textarea>
+    </label>
+    <button
+      type="submit"
+      class="button capital"
+    >
+      <i class="fa-solid fa-check"></i> update
+    </button>
+  </form>
+</div>

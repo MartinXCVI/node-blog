@@ -59,6 +59,9 @@ p {
   text-decoration: none;
   cursor: pointer;
 }
+button {
+  cursor: pointer;
+}
 .btn-delete {
   padding: 0.75rem 1rem;
   background-color: red;
@@ -210,7 +213,7 @@ textarea {
   gap: 0.25rem;
   padding: 0.5rem 0.75rem;
   background: none;
-  border-radius: 0.5rem;
+  border-radius: 3rem;
   border: 2px solid transparent;
   font-size: 0.9rem;
   font-weight: 600;
@@ -228,12 +231,13 @@ textarea {
 .header-nav ul a {
   padding: 0.75rem;
   text-decoration: none;
+  font-weight: 700;
 }
 .header-nav ul a:hover {
   text-decoration: underline;
 }
-.header-nav ul a:active {
-  color: #808080;
+.header-nav ul a.active {
+  color: #606060 !important;
 }
 @media only screen and (min-width: 768px) {
   .header {
@@ -276,6 +280,7 @@ textarea {
   position: absolute;
   top: 0;
   right: 0;
+  background-color: transparent;
   color: springgreen;
   padding: 1rem;
 }
@@ -350,6 +355,7 @@ textarea {
 }
 .admin-title {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
 }
@@ -367,7 +373,6 @@ textarea {
 }
 .admin-posts li {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem 0;

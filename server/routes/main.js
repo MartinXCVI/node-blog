@@ -7,7 +7,6 @@ const Post = require('../models/Post')
 
 // Home route - GET
 router.get('/', async (req, res)=> {
-
   try{
     const locals = {
       title: "Node Blog",
@@ -30,7 +29,8 @@ router.get('/', async (req, res)=> {
       locals,
       data,
       current: page,
-      nextPage: hasNextPage ? nextPage : null
+      nextPage: hasNextPage ? nextPage : null,
+      currentRoute: '/'
     })
 
   } catch(error) {
@@ -50,7 +50,7 @@ router.get('/post/:id', async (req, res)=> {
       description: "Simple blog created with Node/Express/Mongo"
     }
 
-    res.render('post', { locals, data })
+    res.render('post', { locals, data, currentRoute: `/post/${slug}` })
   } catch(error) {
     console.error(error)
   }
@@ -89,7 +89,7 @@ router.get('/about', (req, res)=> {
     title: "Node Blog: About",
     description: "Simple blog created with Node/Express/Mongo"
   }
-  res.render('about', { locals })
+  res.render('about', { locals, currentRoute: '/about' })
 })
 
 router.get('/contact', (req, res)=> {
@@ -97,7 +97,7 @@ router.get('/contact', (req, res)=> {
     title: "Node Blog: Contact",
     description: "Simple blog created with Node/Express/Mongo"
   }
-  res.render('contact', { locals })
+  res.render('contact', { locals, currentRoute: '/contact' })
 })
 
 module.exports = router

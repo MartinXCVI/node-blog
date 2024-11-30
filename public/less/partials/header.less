@@ -33,7 +33,7 @@
     gap: 0.25rem;
     padding: 0.5rem 0.75rem;
     background: none;
-    border-radius: 0.5rem;
+    border-radius: 3rem;
     border: 2px solid transparent;
     font-size: 0.9rem;
     .bold;
@@ -52,15 +52,15 @@
   a {
     padding: 0.75rem;
     text-decoration: none;
+    font-weight: 700;
     &:hover {
       text-decoration: underline;
     }
-    &:active {
-      color: @grey;
-    }
   }
 }
-
+.header-nav ul a.active {
+  color: @darkGrey !important;
+}
 
 @media only screen and (min-width: 768px) {
   
